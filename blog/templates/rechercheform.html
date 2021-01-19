@@ -1,0 +1,5 @@
+<form  method="get" action="{% url 'rechercheform' %}" class="search_form">
+  {% csrf_token %}
+  <input type="text" class="input-block-level search-query" name="query" Placeholder="ville,quartier"  style="color: black;">
+  <button type="submit" class="search-btn">Recherche</button>
+</form>
