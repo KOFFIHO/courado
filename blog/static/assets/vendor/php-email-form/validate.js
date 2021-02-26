@@ -60,7 +60,7 @@
             }
             break;
         }
-        i.next('.validate').html((ierror ? (i.attr('data-msg') !== undefined ? i.attr('data-msg') : 'wrong Input') : '')).show('blind');
+        /*i.next('.validate').html((ierror ? (i.attr('data-msg') !== undefined ? i.attr('data-msg') : 'wrong Input') : '')).show('blind');*/
       }
     });
     f.children('textarea').each(function() { // run all inputs

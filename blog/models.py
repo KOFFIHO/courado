@@ -16,7 +16,7 @@ class Ville(models.Model):
 class Repetiteur(models.Model):
     nom = models.CharField(max_length=100)
     ville = models.CharField(max_length=100)
-    prix = models.IntegerField()
+    prix = models.IntegerField(blank=True , null=True)
     commune = models.CharField(max_length=100, blank=True, null=True)
     quartier = models.CharField(max_length=100)
     matiere = models.CharField( max_length=500)
@@ -48,12 +48,14 @@ class Repetiteur(models.Model):
 class Formulaire(models.Model):
     nom = models.CharField(max_length=100)
     ville = models.CharField(max_length=100)
+    prix = models.IntegerField(blank=True , null=True, default=0)
     quartier = models.CharField(max_length=100)
     matiere = models.CharField( max_length=500)
     commune = models.CharField(max_length=100, blank=True, null=True)
     cv = models.FileField(upload_to='photoform',blank=True)
     experience = models.CharField(max_length=50)
     niveau = models.CharField(max_length=200)
+    niveauEnsei = models.CharField(max_length=1000)
     telephone = models.CharField(max_length=50)
     photopi = models.FileField(upload_to='photoform',blank=True)
     phOto = models.ImageField(upload_to='photoform',blank=True)
@@ -63,6 +65,19 @@ class Formulaire(models.Model):
     
     def __str__(self):
         return self.nom
+    
+    @staticmethod
+    def get_all_formulaires():
+        return Formulaire.objects.all()
+
+    @staticmethod
+    def get_all_formulaires_by_formulairesid(ville_id):
+        if ville_id:
+            return Formulaire.objects.filter(ville = ville_id)
+        
+        else:
+            return Formulaire.get_all_formulaires()
+
 
 
 class Note(models.Model):
@@ -72,3 +87,21 @@ class Note(models.Model):
 
     def __str__(self):
         return self.nom
+
+class Defile(models.Model):
+    image1= models.ImageField(upload_to='stock')
+    description = models.TextField()
+    image2= models.ImageField(upload_to='stock')
+    description1 = models.TextField()
+    image3= models.ImageField(upload_to='stock')
+    description2 = models.TextField()
+    telephone = models.CharField(max_length=50)
+    
+    def __str__(self):
+        return self.description
+
+class Offre(models.Model):
+    contenu = models.TextField()
+
+    def __str__(self):
+        return self.contenu

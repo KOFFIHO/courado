@@ -1,5 +1,20 @@
-<form  method="get" action="{% url 'rechercheform' %}" class="search_form">
+<!--<form  method="get" action="{% url 'rechercheform' %}" class="search_form">
   {% csrf_token %}
-  <input type="text" class="input-block-level search-query" name="query" Placeholder="ville,quartier"  style="color: black;">
+  <input type="text" class="input-block-level search-query" name="query" Placeholder="ville ou commune ou quartier ..."  style="color: black;">
   <button type="submit" class="search-btn">Recherche</button>
+</form> -->
+
+
+
+<form method="get" action="{% url 'rechercheform' %}" class="search_form">
+  {% csrf_token %}
+  <div class="top-search">
+    <div class="container">
+        <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-search"></i></span>
+            <input type="text" class="form-control" name="query" placeholder="ville ou commune ou quartier ...">
+            <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+        </div>
+    </div>
+  </div>
 </form>
